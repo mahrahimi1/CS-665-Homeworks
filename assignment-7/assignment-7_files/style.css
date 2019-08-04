@@ -1,0 +1,221 @@
+body {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 16px;
+    text-rendering: optimizeLegibility;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+p img {
+    max-width: 100%;
+}
+
+.center {
+    display: block;
+    margin: auto;
+}
+
+ul.posts {
+    padding: 0;
+}
+
+.small-caption {
+    font-size: .85em;
+    text-align: right;
+    display: block;
+}
+
+p, ul, ol, td {
+    font-weight: 400;
+    color: #444;
+}
+
+th {
+    font-weight: 600;
+}
+
+table td, table th {
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+}
+
+em {
+    font-weight: 600;
+    font-style: normal
+}
+
+.heading {
+    font-weight: 600;
+    font-size: .75em;
+    margin-top: 20px;
+}
+
+.bold {
+    font-weight: 700;
+    color: #444;
+}
+
+.light {
+    font-weight: 100;
+}
+
+h1.my-sidebar > a {
+    padding-top: 0em;
+    padding-bottom: 0em;
+    position: relative;
+    left: -20px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+#sidebar {
+    position: relative;
+}
+ul.nav-sidebar > li {
+    text-align: right;
+    padding: 0;
+    margin: 0;
+    /*  height: 20px; ungh, why do I need this? */
+}
+
+h1.my-sidebar {
+    padding: 0;
+    margin: 0;
+    margin-left: 0.5em;
+}
+
+h2.my-sidebar, h3.my-sidebar, h4.my-sidebar {
+    padding: 0;
+    margin: 0;
+    margin-left: 1em;
+}
+
+h2.my-sidebar > a, h3.my-sidebar > a, h4.my-sidebar > a {
+    padding: 0;
+    margin: 0;
+    font-weight: 300;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 0.85em;
+}
+
+h1 {
+    padding-top: 0em;
+    padding-bottom: 0em;
+    position: relative;
+    left: -20px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    position: relative;
+    left: -1em;
+    text-transform: uppercase;
+    font-size: 1.05em;
+}
+
+h3 {
+    margin-left: 0.5em;
+    margin-top: 1.5em;
+    font-size: 0.85em;
+}
+
+h4 {
+    color: #888;
+    margin-left: 0.5em;
+    margin-top: 1.5em;
+    text-transform: inherit;
+    font-size: 0.85em;
+}
+
+div.flush-right > h2, div.flush-right > h3, div.flush-right > h4 {
+    left: 0.7em;
+}
+
+iframe {
+    border: none;
+    margin: 0;
+    padding: .5em;
+}
+
+ul.posts {
+    list-style-type: none;
+}
+
+a {
+    color: #c07040;
+}
+
+.sidebar {
+    position: absolute;
+    right: -250px;
+}
+
+.sidebar-large {
+    position: absolute;
+    right: -370px;
+}
+
+.flush-right {
+    text-align: right;
+}
+
+div.post-content h2, div.post-content h3, div.post-content h4 {
+    margin-top:40px;
+    margin-bottom:20px;
+}
+
+code {
+    padding: 0;
+    font-size: 70%;
+    color: #244;
+    background-color: #fff;
+}
+
+a.reversefootnote {
+    font-size: 50%;
+}
+
+#footer {
+    font-weight: 300;
+    color: #ddd;
+}
+
+div.footnotes {
+    font-size: 80%;
+}
+
+html.inline-frame {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body.inline-frame {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.editable {
+    background-color: #ddd;
+}
+
+/* https://stackoverflow.com/a/4753609 */
+div.center-scaffold {
+    width:100%;
+    text-align: center;
+}
+
+div.center-scaffold div {
+    display: inline-block;
+}
