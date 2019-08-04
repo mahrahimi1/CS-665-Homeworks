@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Assignment 1: Decision Trees</title>
+    <link rel="stylesheet" href="/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS"
+      href="/feed.xml">
+    <!-- All of the things I want my webpages to include -->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/d3/4.10.0/d3.min.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: {
+          Macros: {
+            Var: "\\textrm{Var}",
+            Cov: "\\textrm{Cov}",
+            norm: ["||#1||", 1],
+            lerp: ["[#1, #2]_#3", 3],
+            cdf: ["\\textbf{CDF}\\{#1\\}", 1]
+          }
+        },
+        extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]], 
+                  processEscapes: true},
+        'HTML-CSS': { availableFonts: [], webFont: 'TeX' }});
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-9">
+	<h1 id="assignment-1-decision-trees">Assignment 1: Decision Trees</h1>
+
+<ul>
+  <li>Posting date: Jan 9th 2018.</li>
+  <li>Due date: Jan 21st 2018, 11:59PM MST.</li>
+  <li>Github Classroom link: <a href="https://classroom.github.com/a/h-aV1NBn">Assignment 1</a>.</li>
+</ul>
+
+<h2 id="assignment-description">Assignment description</h2>
+
+<p>In this assignment, we will implement a full ML classifier based on
+<em>decision trees</em>. The datasets we will use to train and evaluate your
+classifier are:</p>
+
+<ul>
+  <li>the <a href="https://archive.ics.uci.edu/ml/datasets/Mushroom">Mushroom Data Set</a></li>
+  <li>the <a href="https://archive.ics.uci.edu/ml/datasets/primary+tumor">Primary Tumor Dataset</a></li>
+</ul>
+
+<p>Both datasets come from the <a href="https://archive.ics.uci.edu/ml/index.php">UCI ML
+repository</a>.</p>
+
+<p>You will not need to download the data from the repository: instead,
+you will use the data provided in the repository that GitHub will
+create automatically for you when you click on the GitHub Classroom link above.</p>
+
+<p>You will submit Python 3 code that should work with Python 3.4, out of
+the box (I myself run Python 3.6.3, for what’s worth). This means
+unless otherwise indicated, you’re not supposed (or expected) to use
+libraries such as numpy and scipy.</p>
+
+<h2 id="assignment-problems">Assignment Problems</h2>
+
+<ol>
+  <li>
+    <p>Implement the basic decision tree procedure as described in the textbook.</p>
+
+    <p>You will implement <code>DecisionTreeTrain</code> as described in page 13 of
+CIML (in the skeleton code we have provided, the name of the
+procedure is simply <code>train</code>).</p>
+  </li>
+  <li>
+    <p>Implement the information gain criterion as described in Quinlan 1986<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>.</p>
+
+    <p>Provide a separate version of <code>DecisionTreeTrain</code> that uses the
+information gain criterion described in the paper (this is
+colloquially known as the ID3 criterion, for the system that first
+implemented it)</p>
+  </li>
+  <li>
+    <p>Implement tree depth control as a means of controlling model complexity.</p>
+
+    <p>The Python procedure <code>train</code> you will implement takes a parameter
+<code>remaining_depth</code>. Use this parameter to stop further refinements
+of the tree.</p>
+  </li>
+  <li>
+    <p>Write a short report <em>in Markdown</em> (or, at best, plaintext) named
+<code>report.md</code> on the training and test accuracies you obtain with
+both datasets, as you vary the complexity of your model. Is there a
+qualitative difference between the two of them? Explain.</p>
+  </li>
+</ol>
+
+<p>Each of those problems above is worth the same amount of credit.</p>
+
+<p>In order for you to receive full credit for this (and future
+assignments), I will need to be able to run the code you
+submit. You’re encouraged to split your code in multiple files (or
+however else you see fit) for organization, reusability, and
+clarity. But your code has to work under the following interface:</p>
+
+<h2 id="spec">Spec</h2>
+
+<p>In order to evaluate your homework, I will run it by typing the following, on
+my shell:</p>
+
+<pre><code>$ python3 decision-tree-basic.py &lt;dataset.pickle&gt; &lt;tree-depth&gt;
+
+$ python3 decision-tree-id3.py &lt;dataset.pickle&gt; &lt;tree-depth&gt;
+</code></pre>
+
+<p>Your code should produce output that looks like this:</p>
+
+<pre><code>$ python3 decision_tree_basic.py primary-tumor.pickle 3
+Training...
+Training complete.
+
+Evaluating...
+Evaluation complete:
+  Training:    73/169: 43.20%
+  Validation:  37/85: 43.53%
+  Testing:     33/85: 38.82%
+</code></pre>
+
+<h2 id="data-source-code">Data, source code</h2>
+
+<p>In case you want to access the files from the repository directly from
+the web, they’re also available <a href="assignment-1-assets/">here</a>.</p>
+
+<p>Make sure you can run <code>describe-data.py</code> sooner rather than later! You
+should get these outputs for the two datasets.</p>
+
+<pre><code>$ python3 describe-data.py agaricus-lepiota.pickle
+Dataset description:
+  Training set:   4062 observations
+    Label distribution:
+      Label e: 2108
+      Label p: 1954
+  Validation set: 2031 observations
+    Label distribution:
+      Label e: 1049
+      Label p: 982
+  Testing set:    2031 observations
+    Label distribution:
+      Label e: 1051
+      Label p: 980
+
+$ python3 describe-data.py primary-tumor.pickle
+Dataset description:
+  Training set:   169 observations
+    Label distribution:
+      Label 1: 36
+      Label 2: 13
+      Label 3: 7
+      Label 4: 4
+      Label 5: 25
+      Label 7: 6
+      Label 8: 3
+      Label 11: 14
+      Label 12: 9
+      Label 13: 4
+      Label 14: 14
+      Label 16: 1
+      Label 17: 4
+      Label 18: 14
+      Label 19: 3
+      Label 20: 1
+      Label 21: 1
+      Label 22: 10
+  Validation set: 85 observations
+    Label distribution:
+      Label 1: 24
+      Label 2: 6
+      Label 3: 2
+      Label 4: 4
+      Label 5: 3
+      Label 7: 6
+      Label 8: 1
+      Label 10: 1
+      Label 11: 5
+      Label 12: 3
+      Label 13: 2
+      Label 14: 8
+      Label 15: 1
+      Label 17: 2
+      Label 18: 8
+      Label 19: 2
+      Label 20: 1
+      Label 22: 6
+  Testing set:    85 observations
+    Label distribution:
+      Label 1: 24
+      Label 2: 1
+      Label 4: 6
+      Label 5: 11
+      Label 6: 1
+      Label 7: 2
+      Label 8: 2
+      Label 10: 1
+      Label 11: 9
+      Label 12: 4
+      Label 13: 1
+      Label 14: 2
+      Label 15: 1
+      Label 17: 4
+      Label 18: 7
+      Label 19: 1
+      Label 22: 8
+</code></pre>
+
+<h2 id="other">Other</h2>
+
+<p>One of the datasets we’re using was originally collected by the
+Audobon Society Field Guide, and comes the following warning: ‘The
+Guide clearly states that there is no simple rule for determining the
+edibility of a mushroom; no rule like “leaflets three, let it be”
+for Poisonous Oak and Ivy.’ <em>Please</em> don’t use this dataset to make
+your foraging decisions!</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Quinlan, J. Ross. <a href="http://hunch.net/~coms-4771/quinlan.pdf">“Induction of decision trees”</a>. Machine learning 1, no. 1 (1986): 81-106. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+      </div>
+      <div class="col-md-3" id="right-column" style="font-weight: 300">
+	<ol id="footnotes-ol-sidebar">
+	</ol>
+      </div>
+    </div>
+    <hr>
+        <div class="container">
+      <div class="col-md-12" id="footer">
+
+	<div style="clear: both"></div>
+	<div>&nbsp;</div>
+      </div>
+    </div>
+    <script src="/js/footer.js"></script>
+    <script src="/js/mobile-detect.js"></script>
+    <script src="/js/iphone-hack.js"></script>
+
+  </body>
+</html>
